@@ -1,0 +1,66 @@
+﻿@model IEnumerable<AppBuku.Models.Buku>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Judul)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Penulis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Penerbit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tahun)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UrlGambar)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Judul)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Penulis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Penerbit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tahun)
+                </td>
+                <td>
+                    <img src="@item.UrlGambar" alt="cover buku">
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
